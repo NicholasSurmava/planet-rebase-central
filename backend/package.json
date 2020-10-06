@@ -4,7 +4,7 @@
   "description": "Incident Management and warehousing app for Planet Rebase LLC (totally real)",
   "main": "server.js",
   "scripts": {
-    "start": "node server"
+    "start": "nodemon server"
   },
   "keywords": [
     "node",
@@ -17,5 +17,8 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }

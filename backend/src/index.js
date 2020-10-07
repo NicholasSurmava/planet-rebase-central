@@ -16,9 +16,12 @@ app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
   // * redirect to the site_status page for now
-  res.redirect("/site_status");
-  // res.render("layout");
+  // res.redirect("/site_status");
+  let links = ["/site_status", "/api/v1/warehouse", "/heartbeat"];
+  res.render("temp", { links: links });
 });
+
+// SITE STATUS ROUTES
 
 app.get("/site_status", (req, res) => {
   res.render("site_status/site_status");
@@ -39,6 +42,16 @@ app.post("/site_status/report", (req, res) => {
   console.log(req.body.site_id);
   let site_id = req.body.site_id;
   res.redirect("/site_status/report?site_id=" + site_id);
+});
+
+// API ROUTES
+app.get("/api/v1/warehouse", (req, res) => {
+  res.send({ site_id: "1111111" });
+});
+
+// HEARTBEAT ROUTE
+app.get("/heartbeat", (req, res) => {
+  res.send({ message: "heartbeat" });
 });
 
 module.exports = server;

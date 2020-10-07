@@ -4,7 +4,9 @@
   "description": "Incident Management and warehousing app for Planet Rebase LLC (totally real)",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server"
+    "start": "nodemon server",
+    "watch:css": "postcss --watch src/static/css/tailwind.css -o public/build/tailwind.css",
+    "build:css": "postcss src/static/css/tailwind.css -o public/build/tailwind.css"
   },
   "keywords": [
     "node",
@@ -16,7 +18,11 @@
   "author": "Nicholas Surmava",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1"
+    "autoprefixer": "^9.0.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "postcss-cli": "^8.0.0",
+    "tailwindcss": "^1.8.11"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"

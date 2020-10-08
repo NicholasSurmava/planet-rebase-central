@@ -1,1 +1,20 @@
-<h1>Found site: <%= data.site_id %></h1>
+<h1>Site Id: <%= site_id %></h1>
+<h2>Site Info:</h2>
+<ul>
+    <li>Site Name: <%= site_name %></li>
+    <li>Site Type: <%= site_type %></li>
+    <li>Address: <%= location.address %></li>
+    <li>City: <%= location.city %></li>
+    <li>Planet: <%= location.planet %></li>
+    <li>Lat: <%= location.lat %></li>
+    <li>Long: <%= location.long %></li>
+</ul>
+<h2>Tech</h2>
+<ul>
+<% tech.forEach(function(t){ %>
+    <li ><%= t %></li>
+    <% }) %>
+</ul>
+<button data-js="get_notes">Get Notes</button>
+<div class="temp"></div>
+<script src="index.js"></script>

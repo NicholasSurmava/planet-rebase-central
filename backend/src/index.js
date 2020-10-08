@@ -26,33 +26,9 @@ app.get("/", (req, res) => {
   res.render("temp", { links: links });
 });
 
-// SITE STATUS ROUTES
-
-app.get("/site_status", (req, res) => {
-  res.render("site_status/site_status");
-});
-
-app.get("/site_status/report", (req, res) => {
-  if (req.query.site_id) {
-    // const query = querystring.stringify({
-    //   site_id: req.query.site_id,
-    // });
-    res.send(`Site id: ${req.query.site_id}`);
-  } else {
-    res.send(404);
-  }
-});
-
-app.post("/site_status/report", (req, res) => {
-  console.log(req.body.site_id);
-  let site_id = req.body.site_id;
-  res.redirect("/site_status/report?site_id=" + site_id);
-});
-
-// API ROUTES
-app.get("/api/v1/warehouse", (req, res) => {
-  res.send({ site_id: "1111111" });
-});
+// ROUTES
+app.use('/site_status', require('./routes/site_status'))
+app.use('/api/v1', require('./routes/warehouse'))
 
 // HEARTBEAT ROUTE
 app.get("/heartbeat", (req, res) => {

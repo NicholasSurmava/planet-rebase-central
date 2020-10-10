@@ -1,28 +1,47 @@
 <div class="container mx-auto">
-    <div style="height: 400px; margin: 20px" id="mapid"></div>
-    <h1 data-js="site_id"><%= site_id %></h1>
-    <h2>Site Info:</h2>
-    <ul>
-        <li>Site Name: <%= site_name %></li>
-        <li>Site Type: <%= site_type %></li>
-        <li>Address: <%= location.address %></li>
-        <li>City: <%= location.city %></li>
-        <li>Planet: <%= location.planet %></li>
-        <li data-js="site_lat"><%= location.lat %></li>
-        <li data-js="site_long"><%= location.long %></li>
-    </ul>
-    <h2>Tech</h2>
-    <ul>
+  <div class="flex">
+    <div
+      style="height: 400px; margin: 20px; width: 75%"
+      class="bg-gray-800 border-solid border-4 border-gray-600"
+      id="mapid"
+    ></div>
+    <div>
+      Link type: <span><%= link_type %></span>
+      <ul>
+        <% for (const [key, value] of Object.entries(related_sites)) { %>
+        <li><%= key %>: <%= value %></li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+  <h1 data-js="site_id"><%= site_id %></h1>
+  <h2>Site Info:</h2>
+  <ul>
+    <li>Site Name: <%= site_name %></li>
+    <li>Site Type: <%= site_type %></li>
+    <li>Address: <%= location.address %></li>
+    <li>City: <%= location.city %></li>
+    <li>Planet: <%= location.planet %></li>
+    <li data-js="site_lat"><%= location.lat %></li>
+    <li data-js="site_long"><%= location.long %></li>
+  </ul>
+  <h2>Tech</h2>
+  <ul>
     <% tech.forEach(function(t){ %>
-        <li ><%= t %></li>
-        <% }) %>
-    </ul>
-    <button data-js="get_notes" class="bg-transparent hover:bg-gray-700 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">Get Notes</button>
-    <div class="temp"></div>
+    <li><%= t %></li>
+    <% }) %>
+  </ul>
+  <button
+    data-js="get_notes"
+    class="bg-transparent hover:bg-gray-700 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+  >
+    Get Notes
+  </button>
+  <div class="temp"></div>
 </div>
 <script
-src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-crossorigin=""
+  src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""
 ></script>
 <script src="index.js"></script>

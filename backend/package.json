@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon server",
     "watch:css": "postcss --watch src/static/css/tailwind.css -o public/build/tailwind.css",
-    "build:css": "postcss src/static/css/tailwind.css -o public/build/tailwind.css"
+    "build:css": "postcss src/static/css/tailwind.css -o public/build/tailwind.css",
+    "watch:js": "parcel watch src/static/js/index.js -d public/build"
   },
   "keywords": [
     "node",
@@ -26,6 +27,7 @@
     "tailwindcss": "^1.8.11"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "parcel-bundler": "^1.12.4"
   }
 }

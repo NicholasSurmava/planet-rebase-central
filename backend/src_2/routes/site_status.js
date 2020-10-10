@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-router.use(express.static("public/build"));
+router.use(express.static("./src/static"));
 
 site = {
   site_id: 111111,

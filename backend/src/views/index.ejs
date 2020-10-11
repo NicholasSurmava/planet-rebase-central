@@ -67,17 +67,26 @@
           <p class="subtitle">
             Created for <strong>Planet Rebase LLC</strong>!
           </p>
-          <form action="/">
+          <form action="/site_status" method='POST'>
             <div class="columns">
               <div class="column">
                 <div class="field">
                   <div class="control">
-                    <input class="input" type="text" placeholder="6 Digit Site Id">
+                    <input 
+                    class="input" 
+                    placeholder="6 Digit Site Id"
+                    type="number"
+                    id="site_id"
+                    name="site_id"
+                    required
+                    min="100000"
+                    max="999999"
+                    >
                   </div>
                 </div>
               </div>
               <div class="column is-four-fifths">
-                <button class="button is-light">Search</button>
+                <button type="submit" class="button is-light">Search</button>
               </div>
             </form>
           </div>

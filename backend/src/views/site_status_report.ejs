@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""
+  />
+</head>
+<body>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <!-- <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"> -->
+        <span>PR</span>
+      </a>
+  
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+  
+        <a class="navbar-item">
+          Documentation
+        </a>
+  
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More
+          </a>
+  
+          <div class="navbar-dropdown">
+            <a class="navbar-item">
+              About
+            </a>
+            <a class="navbar-item">
+              Contact
+            </a>
+            <hr class="navbar-divider">
+            <a class="navbar-item">
+              Report an issue
+            </a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-primary">
+              <strong>Log in</strong>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+    <section class="section">
+        <div class="container">
+          <h1 class="title">
+            Site Id: <span data-js="site_id"><a><%= site_id %></a></span>
+          </h1>
+          <p class="subtitle">
+            <%= site_name %>
+          </p>
+          <div class="has-background-dark p-2">
+            <div style="height: 400px" class="as-background-dark" id="mapid"></div>
+          </div>
+        
+          <div class="tabs is-centered">
+            <ul>
+              <li class="is-active"><a>Summary</a></li>
+              <li><a>Attributes</a></li>
+              <li><a>Tickets</a></li>
+              <li><a>Alarms</a></li>
+              <li><a>Performance</a></li>
+            </ul>
+          </div>
+          <div class="columns">
+            <div class="column">
+              <p><%=site_type %></p>
+              Link type: <span><%= link_type %></span>
+            </div>
+            <div class="column">
+          <ul>
+            <li>Site Name: <%= site_name %></li>
+            <li>Site Type: <%= site_type %></li>
+            <li>Address: <%= location.address %></li>
+            <li>City: <%= location.city %></li>
+            <li>Planet: <%= location.planet %></li>
+            <li data-js="site_lat"><%= location.lat %></li>
+            <li data-js="site_long"><%= location.long %></li>
+          </ul>
+        </div>
+        <div class="column">
+          <ul>
+            <% for (const [key, value] of Object.entries(related_sites)) { %>
+            <li><%= key %>: <%= value %></li>
+            <% } %>
+          </ul>
+        </div>
+        <div class="column">
+          <ul>
+            <% tech.forEach(function(t){ %>
+            <li><%= t %></li>
+            <% }) %>
+          </ul>
+        </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      </section>
+      <form action="#">
+        <button class="button is-warning">Report Issue</button>
+      </form>
+
+      <script
+  src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""
+></script>
+
+<script>
+    let site_id = document.querySelector('[data-js="site_id"]').innerHTML;
+  let site_lat = document.querySelector('[data-js="site_lat"]').innerHTML;
+  let site_long = document.querySelector('[data-js="site_long"]').innerHTML;
+  var mymap = L.map("mapid").setView(
+    [parseInt(site_lat), parseInt(site_long)],
+    13
+  );
+
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  }).addTo(mymap);
+
+  var circle = L.circle([parseInt(site_lat), parseInt(site_long)], {
+    color: "red",
+    fillColor: "#f03",
+    fillOpacity: 0.5,
+    radius: 100,
+  })
+    .addTo(mymap)
+    .on("click", onClick);
+
+  function onClick(e) {
+    const URL = "/site_status/report?site_id=" + site_id;
+    window.open(URL, "_blank");
+  }
+
+  var popup = L.popup();
+
+  circle.on("mouseover", function () {
+    circle.bindPopup("Site id: " + site_id).openPopup();
+  });
+
+  circle.on("mouseout", function () {
+    circle.closePopup();
+  });
+</script>
+
+</body>
+</html>

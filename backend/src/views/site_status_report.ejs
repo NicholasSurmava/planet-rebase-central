@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="has-navbar-fixed-top">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,7 @@
   />
 </head>
 <body>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="/">
         <!-- <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"> -->
@@ -68,17 +68,20 @@
       </div>
     </div>
   </nav>
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Site Id: <span data-js="site_id"><a><%= site_id %></a></span>
+        </h1>
+        <h2 class="subtitle">
+          <%= site_name %>
+        </h2>
+      </div>
+    </div>
+  </section>
     <section class="section">
-            <div class="container">
-              <h1 class="title">
-                Site Id: <span data-js="site_id"><a><%= site_id %></a></span>
-              </h1>
-              <p class="subtitle">
-                <%= site_name %>
-              </p>
-              <div class="has-background-dark p-2 is-hidden">
-                <div style="height: 400px" class="as-background-dark" id="mapid"></div>
-              </div>
+      <div class="container">
               <div class="columns">
                 <div class="column">
                   <p><%=site_type %></p>
@@ -113,15 +116,21 @@
               <div class="tabs is-centered">
                 <ul>
                   <li><a>Summary</a></li>
-                  <li class="is-active"><a>Attributes</a></li>
+                  <li class="is-active" id="tab_attributes"><a>Attributes</a></li>
                   <li><a>Tickets</a></li>
                   <li><a>Alarms</a></li>
-                  <li><a>Map</a></li>
+                  <li id="tab_map"><a data-js="tab_toggle_map">Map</a></li>
                   <li><a>Performance</a></li>
                 </ul>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      </section>
+      <section class="section">
+        <div id="map_container" class="has-background-dark p-2 is-hidden">
+          <div style="height: 400px" class="as-background-dark" id="mapid"></div>
         </div>
       </section>
 
@@ -136,7 +145,9 @@
     let site_id = document.querySelector('[data-js="site_id"]').innerHTML;
   let site_lat = document.querySelector('[data-js="site_lat"]').innerHTML;
   let site_long = document.querySelector('[data-js="site_long"]').innerHTML;
-  var mymap = L.map("mapid").setView(
+  var mymap = L.map("mapid")
+  
+  mymap.setView(
     [parseInt(site_lat), parseInt(site_long)],
     13
   );
@@ -169,6 +180,18 @@
   circle.on("mouseout", function () {
     circle.closePopup();
   });
+
+  let tab_toggle_map = document.querySelector('[data-js="tab_toggle_map"]');
+  let map_container = document.querySelector('#map_container');
+  let tab_attributes = document.querySelector('#tab_attributes');
+  let tab_map = document.querySelector('#tab_map');
+
+  tab_toggle_map.addEventListener('click', () => {
+    map_container.classList.remove('is-hidden');
+    tab_map.classList.add('is-active');
+    tab_attributes.classList.remove('is-active');
+    mymap.invalidateSize();
+  })
 </script>
 
 </body>

@@ -1,26 +1,23 @@
 {
   "name": "planet-rebase-central",
-  "version": "1.0.0",
-  "description": "Incident Management and warehousing app for Planet Rebase LLC (totally real)",
-  "main": "server.js",
+  "version": "0.0.1",
+  "description": "planet rebase warehousing and incident management system",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon server"
+    "start": "node server",
+    "dev": "nodemon server"
   },
   "keywords": [
-    "node",
-    "react",
-    "ssr",
-    "spa",
-    "mars"
+    "node"
   ],
   "author": "Nicholas Surmava",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.21.0",
     "ejs": "^3.1.5",
-    "express": "^4.17.1",
-    "express-ejs-layouts": "^2.5.0"
+    "express": "^4.17.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.6"
   }
 }

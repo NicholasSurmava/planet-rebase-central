@@ -1,11 +1,4 @@
-const app = require("./src/index");
-const port = process.env.PORT || 8080
+const app = require("./src");
+const PORT = 8080;
 
-app.listen(port, () => {
-    console.log(`Server listening at http://localhost:${port}`)
-})
-
-process.on("unhandledRejection", e => {
-    console.log(e.message);
-    process.exit(1);
-  });
+app.listen(PORT, () => console.log(`Server started on PORT: ${PORT}`));

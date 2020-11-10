@@ -1,52 +1,40 @@
-const express = require("express");
+const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
+const expressLayouts = require('express-ejs-layouts');
+const {routes} = require('../config');
+
 const app = express();
-const http = require("http");
-const server = http.Server(app);
-const querystring = require("querystring");
 
-app.use(express.urlencoded({ extended: false }));
+// ? Express settings? Or would this be considered middleware as well?
+app.use('/static', express.static(path.join(__dirname, 'public')))
 
-app.set("views", "./src/views");
-app.set("view engine", "ejs");
+app.use(expressLayouts)
+app.set('layout', path.join(__dirname, 'views/layouts/layout'));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
-app.get("/", (req, res) => {
-    // * redirect to the site_status page for now
-  
-    // res.render('index');
-    res.redirect('/site_status');
-  });
+// Middleware for certains
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
-app.get("/site_status", (req, res) => {
-  res.render('index');
+// Index
+app.get(routes.index, (req, res, next) => {
+    res.redirect(routes.tower_status); 
 })
 
-app.post("/site_status", (req, res) => {
-  let site_id = req.body.site_id;
-  res.redirect("/site_status/report?site_id=" + site_id);
-})
+// Heartbeat
+app.get(routes.heartbeat, (req, res, next) => {
+    res.send({ status: 'alive' });
+});
 
-app.get("/site_status/report", (req, res) => {
-    data = {
-      site_id: req.query.site_id,
-      site_name: "Farts Tower",
-      site_type: "Communication Tower",
-      location: {
-        address: "400 Farts Ave.",
-        city: "New Mars City",
-        planet: "Mars",
-        lat: 42.2009,
-        long: -88.2145,
-      },
-      tech: ["LTE", "CDMA", "EVDO", "VOLTE", "5G"],
-      link_type: "HUB",
-      related_sites: {
-        HOP: 555555,
-        HOP_2: 555556,
-        TAIL: 555557,
-      },
-    }
-  
-  res.render('site_status_report', data)
-})
 
-module.exports = server;
+////////////////////////////////
+
+var tower_360 = require(path.join(__dirname, 'controllers/tower_360'));
+
+app.use(routes.tower_status, tower_360);
+
+// /////////////////////////////////
+
+module.exports = app;

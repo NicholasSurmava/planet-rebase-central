@@ -1,16 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planet Rebase - Central | <%= title %></title>
-    <link rel="stylesheet" href="../static/dist/index.css">
-</head>
-<body>
-    <p style="font-size:100px">&#129409;</p>
-    <form action="<%= form_url %>" method="POST" target='_blank'>
-        <input type="text" name="site_id" id="site_id">
-        <button type="submit">Search</button>
-    </form>
-</body>
-</html>
+<div class="container">
+    <section class="section">
+        <div class="columns is-centered">
+            <div class="column is-narrow">
+                <form action="<%= form_url %>" method="POST" target='_blank'>
+                    <div class="field has-addons">
+                        <div class="control">
+                            <input class="input" type="text" name="site_id" id="site_id" placeholder="123456">
+                        </div>
+                        <div class="control">
+                            <button class="button is-info" type="submit">
+                            Search
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+
+
+
+
+
+
+
+
+
+        <!-- <div class="columns">
+            <div class="column">
+                <div class="field">
+                    <label class="label">Name</label>
+                    <div class="control">
+                        <input class="input" type="text" name="site_id" id="site_id" placeholder="123456">
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="control">
+                    <button class="button is-primary is-outlined"  type="submit">Submit</button>
+                </div>
+            </div>
+        </div> -->
+   
+</div>

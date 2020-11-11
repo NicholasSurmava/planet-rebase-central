@@ -50,35 +50,37 @@
             </div>
         </section>
 
-        <progress data-js="progressBar" class="progress is-large is-info" max="100">60%</progress>
-
         <!-- Summary -->
-        <section data-js="summarySection" class="section is-hidden">
+        <section data-js="summarySection" class="section">
             <div class="container">
                 <div class="level is-mobile">
                     <div class="level-item has-text-centered">
                     <div>
                         <!-- Color based on highest criticality of alarm -->
                         <p class="heading">Active Alarms</p>
-                        <p class="title is-clickable">0</p>
+                        <p data-js="activeAlarmContainer" class="loader title is-clickable">
+                        </p>
                     </div>
                     </div>
                     <div class="level-item has-text-centered">
                     <div>
                         <p class="heading">Open Incident Tickets</p>
-                        <p class="title is-clickable">2</p>
+                        <p data-js="openIncidentContainer" class="loader title is-clickable">
+                        </p>
                     </div>
                     </div>
                     <div class="level-item has-text-centered">
                     <div>
                         <p class="heading">Open Maintenance Requests</p>
-                        <p class="title is-clickable">3</p>
+                        <p data-js="openMaintenanceContainer" class="loader title is-clickable">
+                        </p>
                     </div>
                     </div>
                     <div class="level-item has-text-centered">
                     <div>
                         <p class="heading">Site Sign in</p>
-                        <p class="title is-clickable">0</p>
+                        <p data-js="siteSignInContainer" class="loader title is-clickable">
+                        </p>
                     </div>
                     </div>
                 </div>

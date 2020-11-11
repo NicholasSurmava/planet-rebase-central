@@ -1,6 +1,6 @@
 exports.routes = {
-    index: '/',
-    heartbeat: '/heartbeat',
-    tower_status: '/tower_status',
-    tower_status_report: '/tower_status/report'
-}
+  index: "/",
+  heartbeat: "/heartbeat",
+  tower_360: "/tower_360",
+  tower_360_report: "/tower_360/report",
+};

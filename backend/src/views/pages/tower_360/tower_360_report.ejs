@@ -1,7 +1,6 @@
-
 <div class="container ">
         <!-- General Site Info -->
-        <section class="section ">
+        <section class="section">
         <div class="container">
             <div class="columns">
                     <div class="column">
@@ -39,20 +38,22 @@
         <section class="section">
             <div class="container">
                 <div class="tabs is-centered">
-                    <ul>
-                    <li class="is-active"><a>Summary</a></li>
-                    <li><a>Details</a></li>
-                    <li><a>Tickets</a></li>
-                    <li><a>Alarms</a></li>
-                    <li><a>Map</a></li>
-                    <li><a>Performance</a></li>
+                    <ul data-js="tabs">
+                        <li class="is-active"><a>Summary</a></li>
+                        <li><a>Details</a></li>
+                        <li><a>Tickets</a></li>
+                        <li><a>Alarms</a></li>
+                        <li><a>Map</a></li>
+                        <li><a>Performance</a></li>
                     </ul>
                 </div>
             </div>
         </section>
 
+        <progress data-js="progressBar" class="progress is-large is-info" max="100">60%</progress>
+
         <!-- Summary -->
-        <section class="section">
+        <section data-js="summarySection" class="section is-hidden">
             <div class="container">
                 <div class="level is-mobile">
                     <div class="level-item has-text-centered">
@@ -85,14 +86,14 @@
         </section>
 
         <!-- Details -->
-        <section class="section">
+        <section class="section is-hidden">
             <div class="container">
 
             </div>
         </section>
 
         <!-- Tickets -->
-        <section class="section">
+        <section class="section is-hidden">
             <div class="container">
                 <div class="table-container">
                     <table class="table is-hoverable">
@@ -397,7 +398,7 @@
         </section>
 
         <!-- Alarms -->
-        <section class="section">
+        <section class="section is-hidden">
             <div class="container">
                 <div class="table-container">
                     <table class="table is-hoverable">
@@ -702,14 +703,14 @@
         </section>
 
         <!-- Map -->
-        <section class="section">
+        <section class="section is-hidden">
             <div class="container">
                 
             </div>
         </section>
 
         <!-- Performance -->
-        <section class="section">
+        <section class="section is-hidden">
             <div class="container">
                 
             </div>

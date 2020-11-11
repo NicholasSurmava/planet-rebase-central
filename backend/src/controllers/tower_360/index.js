@@ -6,6 +6,8 @@ router.get(routes.index, (req, res, next) => {
   res.render("pages/tower_360/tower_360", {
     title: "home",
     form_url: routes.tower_360,
+    layout: "layouts/layout",
+    routes,
   });
 });
 
@@ -43,6 +45,7 @@ router.get(routes.index + "report", (req, res, next) => {
     title: fake_data.site_id,
     fake_data,
     routes,
+    layout: "layouts/layout",
   });
 });
 

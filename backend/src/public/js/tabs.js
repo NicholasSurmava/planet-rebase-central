@@ -1,9 +1,8 @@
 import { checkExistence } from ".";
 
 // TODO: Convert to class?
-export default function Tabs() {
+export function Tabs() {
   let tabs = document.querySelector('[data-js="tabs"]');
-  let sections = document.querySelector('[data-js="sections"]');
 
   let getActiveTab = () => {
     let activeTab;
@@ -18,17 +17,12 @@ export default function Tabs() {
     return activeTab;
   };
 
-  //   TODO: Create a function to check visible function? Need to somehow display and hide different sections based on the clicked tab
-  //   if (checkExistence(sections) === true) {
-  //     //   if (sections.childNodes === "SECTION") {
-  //     //     console.log()
-  //     //   }
-  //     sections.childNodes.forEach((section) => {
-  //       if (section.nodeName === "SECTION") {
-  //         console.log(section);
-  //       }
-  //     });
-  //   }
+  let tabbedSection = new TabbedSections();
+
+  // console.log(activeSection);
+  // console.log(tabbedSection.getAllSections());
+
+  let activeSection;
 
   if (checkExistence(tabs) === true) {
     tabs.childNodes.forEach((tab) => {
@@ -36,8 +30,50 @@ export default function Tabs() {
         tab.addEventListener("click", () => {
           getActiveTab().classList.remove("is-active");
           tab.classList.add("is-active");
+          // console.log(tab.textContent);
+
+          activeSection = tabbedSection.getActiveSection();
+          activeSection.classList.add("is-hidden");
+          tabbedSection.getAllSections().forEach((section) => {
+            if (section.attributes.name.textContent === tab.textContent) {
+              // console.log("matched!");
+              section.classList.remove("is-hidden");
+            }
+          });
         });
       }
     });
   }
+}
+
+export function TabbedSections() {
+  let tabbedSections = document.querySelector('[data-js="tabbedSections"]');
+
+  let getActiveSection = function () {
+    let activeSection;
+    tabbedSections.childNodes.forEach((section) => {
+      if (section.nodeName === "SECTION") {
+        if (!section.classList.contains("is-hidden")) {
+          // console.log(section);
+          activeSection = section;
+        }
+      }
+    });
+    return activeSection;
+  };
+
+  let getAllSections = function () {
+    let allSections = [];
+    tabbedSections.childNodes.forEach((section) => {
+      if (section.nodeName === "SECTION") {
+        allSections.push(section);
+      }
+    });
+    return allSections;
+  };
+
+  return {
+    getActiveSection,
+    getAllSections,
+  };
 }

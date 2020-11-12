@@ -1,7 +1,7 @@
 import "../../../node_modules/bulma/css/bulma.min.css";
 import "../css/spinner.css";
 
-import Tabs from "../js/tabs";
+import { Tabs, TabbedSections } from "../js/tabs";
 
 export let checkExistence = (element) => {
   // let element = document.querySelector(el);
@@ -58,4 +58,5 @@ let test = () => {
 window.onload = () => {
   test();
   Tabs();
+  TabbedSections();
 };

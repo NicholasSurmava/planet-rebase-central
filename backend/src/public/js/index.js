@@ -1,7 +1,9 @@
 import "../../../node_modules/bulma/css/bulma.min.css";
 import "../css/spinner.css";
+import "../css/map_leaflet.css";
 
-import { Tabs, TabbedSections } from "../js/tabs";
+import { Tabs, TabbedSections } from "./tabs";
+import Mapper from "./Mapper";
 
 export let checkExistence = (element) => {
   // let element = document.querySelector(el);

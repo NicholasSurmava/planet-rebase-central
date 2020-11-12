@@ -1,4 +1,5 @@
 import { checkExistence } from ".";
+import Mapper from "./Mapper";
 
 // TODO: Convert to class?
 export function Tabs() {
@@ -19,9 +20,6 @@ export function Tabs() {
 
   let tabbedSection = new TabbedSections();
 
-  // console.log(activeSection);
-  // console.log(tabbedSection.getAllSections());
-
   let activeSection;
 
   if (checkExistence(tabs) === true) {
@@ -38,6 +36,9 @@ export function Tabs() {
             if (section.attributes.name.textContent === tab.textContent) {
               // console.log("matched!");
               section.classList.remove("is-hidden");
+            }
+            if (section.attributes.name.textContent === "Map") {
+              console.log("redraw map");
             }
           });
         });

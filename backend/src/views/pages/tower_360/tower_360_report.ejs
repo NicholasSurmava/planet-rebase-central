@@ -91,7 +91,32 @@
             <!-- Details -->
             <section name="Details" data-js="detailsSection" class="section is-hidden">
                 <div class="container">
-                    details
+
+                    <div class="columns is-mobile is-centered">
+                        <div class="column is-half has-text-centered">
+                            <p><%= fake_data.site_name %></p>
+                            <p><%= fake_data.site_id %></p>
+                            <p><%= fake_data.location.street_address %></p>
+                            <p><%= fake_data.location.city %></p>
+                            <p><%= fake_data.location.state %></p>
+                            <p><%= fake_data.location.zip %></p>
+                            <% fake_data.tech.forEach((t) => { %>
+                                <p><%= t %></p>
+                            <% }) %>
+                        </div>
+                      </div>
+
+                    
+                    <!-- id: ,
+                    location: {
+                    street_address: "500 farts lane",
+                    city: "New Farts York",
+                    state: "NFY",
+                    zip: 65813,
+                    },
+                    site_name: "New Farts York",
+                    site_id: querystrings.site_id,
+                    tech: ["low_speed_data", "high_speed_data", "voice", "emergency"], -->
                 </div>
             </section>
 
@@ -715,7 +740,7 @@
             <!-- Performance -->
             <section name="Performance" data-js="performanceSection" class="section is-hidden">
                 <div class="container">
-                    performance
+                    <canvas id="myChart" width="400" height="400"></canvas>
                 </div>
             </section>
         </div>

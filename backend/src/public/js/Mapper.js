@@ -1,7 +1,9 @@
-// export default function () {
-//   let mymap = L.map("mapid");
+// TODO: Create a factory function to return an initialized map object, export said object and import as needed. Example: import into tabs component to call the rerender method when map tab is clicked.
+// export let mapDemo = () => {
+//   let mapContainer = document.querySelector("#mapid");
 
-//   let buildMap = function (mymap) {
+//   if (checkExistence(mapContainer) === true) {
+//     let mymap = L.map();
 //     mymap.setView([51.505, -0.09], 13);
 
 //     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -19,7 +21,7 @@
 //       .on("click", onClick);
 
 //     function onClick(e) {
-//       const URL = "/site_report?site=123456";
+//       const URL = `${routes.tower_360_report}?site=123456`;
 //       window.open(URL, "_blank");
 //     }
 
@@ -32,10 +34,9 @@
 //     circle.on("mouseout", function () {
 //       circle.closePopup();
 //     });
-//   };
 
-//   return {
-//     buildMap,
-//     mymap,
-//   };
-// }
+//     setTimeout(function () {
+//       mymap.invalidateSize();
+//     }, 4000);
+//   }
+// };

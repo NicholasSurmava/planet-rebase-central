@@ -1,4 +1,7 @@
 #mapid {
   height: 480px;
-  z-index: -1;
+}
+
+.navbar.is-fixed-top {
+  z-index: 20000;
 }

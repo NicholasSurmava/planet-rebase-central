@@ -6,6 +6,7 @@ import "../css/map_leaflet.css";
 import { routes } from "../../../config";
 
 import { Tabs, TabbedSections } from "./tabs";
+
 // import Mapper from "./Mapper";
 
 export let checkExistence = (element) => {
@@ -151,10 +152,46 @@ let test = () => {
   }
 };
 
+// TODO: get some weather
+
+let getWeather = () => {
+  let weatherSection = document.querySelector('[data-js="weatherSection"]');
+  let weatherSectionContainer;
+  const ul = document.createElement("ul");
+
+  weatherSection.childNodes.forEach((children) => {
+    if (children.nodeName === "DIV") {
+      weatherSectionContainer = children;
+    }
+  });
+
+  weatherSectionContainer.classList.add("loader");
+
+  fetch("/tower_360/__demo_weather")
+    .then((response) => response.json())
+    .then((data) => {
+      // weatherSection.document.querySelector("div").innerHTML = data;
+      // console.log(weatherSection.childNodes);
+      // console.log(data);
+
+      weatherSectionContainer.appendChild(ul);
+      data.forEach((d) => {
+        const li = document.createElement("li");
+        ul.appendChild(li);
+        li.textContent = d.title;
+      });
+      weatherSectionContainer.classList.remove("loader");
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+};
+
 window.onload = () => {
   test();
   Tabs();
   TabbedSections();
   mapDemo();
   ChartInit();
+  getWeather();
 };

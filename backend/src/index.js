@@ -20,12 +20,20 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 // Index
 app.get(routes.index, (req, res, next) => {
-  res.redirect(routes.tower_360);
+  try {
+    res.redirect(routes.tower_360);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
 });
 
 // Heartbeat
 app.get(routes.heartbeat, (req, res, next) => {
-  res.send({ status: "alive" });
+  try {
+    res.send({ status: "alive" });
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
 });
 
 ////////////////////////////////

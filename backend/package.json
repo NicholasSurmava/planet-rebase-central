@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server",
     "dev": "nodemon server",
-    "build": "parcel build src/public/js/index.js --out-dir src/public/dist",
+    "build": "npx parcel build src/public/js/index.js --out-dir src/public/dist",
     "watch": "parcel watch src/public/js/index.js --out-dir src/public/dist"
   },
   "keywords": [],

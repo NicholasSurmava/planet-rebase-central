@@ -38,9 +38,11 @@ app.get(routes.heartbeat, (req, res, next) => {
 
 ////////////////////////////////
 
-var tower_360 = require(path.join(__dirname, "controllers/tower_360"));
+const tower_360 = require(path.join(__dirname, "controllers/tower_360"));
+const warehouse = require(path.join(__dirname, "controllers/warehouse"));
 
 app.use(routes.tower_360, tower_360);
+app.use(routes.warehouse, warehouse);
 
 // /////////////////////////////////
 

@@ -71,6 +71,7 @@ router.get("/__demo_weather", async (req, res, next) => {
       .then((data) => {
         return data;
       });
+    console.log("getting weather");
 
     setTimeout(() => {
       res.json(getWeather);

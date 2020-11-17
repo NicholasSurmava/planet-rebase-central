@@ -6,6 +6,7 @@ import "../css/map_leaflet.css";
 import { routes } from "../../../config";
 
 import { Tabs, TabbedSections } from "./tabs";
+import fetch from "node-fetch";
 
 // import Mapper from "./Mapper";
 
@@ -188,6 +189,14 @@ let getWeather = () => {
     });
 };
 
+let getSites = () => {
+  fetch("/warehouse/get_sites")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    });
+};
+
 window.onload = () => {
   test();
   Tabs();
@@ -195,6 +204,7 @@ window.onload = () => {
   mapDemo();
   ChartInit();
   getWeather();
+  getSites();
 
   document
     .querySelector('[data-js="getWeatherBtn"]')

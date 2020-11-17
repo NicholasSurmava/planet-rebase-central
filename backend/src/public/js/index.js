@@ -155,6 +155,7 @@ let test = () => {
 // TODO: get some weather
 
 let getWeather = () => {
+  console.log("Getting weather");
   let weatherSection = document.querySelector('[data-js="weatherSection"]');
   let weatherSectionContainer;
   const ul = document.createElement("ul");
@@ -194,4 +195,8 @@ window.onload = () => {
   mapDemo();
   ChartInit();
   getWeather();
+
+  document
+    .querySelector('[data-js="getWeatherBtn"]')
+    .addEventListener("click", getWeather);
 };

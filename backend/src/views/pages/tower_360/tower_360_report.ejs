@@ -4,34 +4,42 @@
             <div class="container">
                 <div id="mapid"></div>
                 <div class="columns">
-                        <div class="column">
-                            <h3 class="title is-3">General Info</h3>
-                            <div class="content">
-                                <p><%= fake_data.site_name %></p>
-                                <p><%= fake_data.site_id %></p>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <h3 class="title is-3">Location Info</h3>
-                            <div class="content">
-                                <p><%= fake_data.location.city %></p>
-                                <p><%= fake_data.location.street_address %></p>
-                                <p><%= fake_data.location.city %></p>
-                                <p><%= fake_data.location.state %></p>
-                                <p><%= fake_data.location.zip %></p>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <h3 class="title is-3">Technology</h3>
-                            <div class="content">
-                                <ul>
-                                    <% fake_data.tech.forEach((t) => { %>
-                                        <li><%= t %></li>
-                                    <% }) %>
-                                </ul>
-                            </div>
+                    <div class="column">
+                        <h3 class="title is-3">General Info</h3>
+                        <div class="content">
+                            <p><%= fake_data.site_name %></p>
+                            <p><%= fake_data.site_id %></p>
                         </div>
                     </div>
+                    <div class="column">
+                        <h3 class="title is-3">Location Info</h3>
+                        <div class="content">
+                            <p><%= fake_data.location.city %></p>
+                            <p><%= fake_data.location.street_address %></p>
+                            <p><%= fake_data.location.city %></p>
+                            <p><%= fake_data.location.state %></p>
+                            <p><%= fake_data.location.zip %></p>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h3 class="title is-3">Technology</h3>
+                        <div class="content">
+                            <ul>
+                                <% fake_data.tech.forEach((t) => { %>
+                                    <li><%= t %></li>
+                                <% }) %>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="column">
+                        <h3 class="title is-3">MWs</h3>
+                        <div class="content">
+                            <ul data-js="mw_container"></ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 

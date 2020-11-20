@@ -197,6 +197,17 @@ let getSites = () => {
     });
 };
 
+let getMWSites = () => {
+  let mw_container = document.querySelector('[data-js="mw_container"]');
+
+  fetch("/warehouse/get_mw")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      mw_container.textContent = `${data.data.length} sites`;
+    });
+};
+
 window.onload = () => {
   test();
   Tabs();
@@ -205,6 +216,7 @@ window.onload = () => {
   ChartInit();
   getWeather();
   getSites();
+  getMWSites();
 
   document
     .querySelector('[data-js="getWeatherBtn"]')

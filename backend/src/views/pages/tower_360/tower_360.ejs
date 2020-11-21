@@ -15,7 +15,7 @@
     <section class="section">
         <div class="columns is-centered">
             <div class="column is-narrow">
-                <form action="<%= form_url %>" method="POST" target='_blank'>
+                <form action="<%= form_url %>" method="POST">
                     <div class="field has-addons">
                         <div class="control">
                             <input class="input" type="text" name="site_id" id="site_id" placeholder="123456">
@@ -30,4 +30,41 @@
             </div>
         </section>
     </div>
+</div>
+
+<div class="container">
+  <section class="section">
+    <div class="table-container" style="display: flex; justify-content: center;">
+      <table class="table">
+        <thead>
+          <tr class="has-text-centered">
+            <% Object.keys(data[0]).forEach((k) => { %>
+              <th><%= k %></th>
+            <% }) %>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <% Object.keys(data[0]).forEach((k) => { %>
+              <th><%= k %></th>
+            <% }) %>
+          </tr>
+        </tfoot>
+        <tbody>
+          <!-- TODO: Account for nested objects, and add links for site ids -->
+          <% data.forEach((d) => { %>
+            <tr>
+              <% for (const [key, value] of Object.entries(d)) { %>
+                <% if (key === "site_id") { %>
+                  <td><a href="/tower_360/report?site_id=<%= value %>"><%= value %></a></td>
+                <% } else { %>
+                  <td><%= value %></td>
+                <% } %>
+              <% } %>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+</section>
 </div>

@@ -2,14 +2,18 @@ const router = require("express").Router();
 const { routes } = require("../../../config");
 const url = require("url");
 const fetch = require("node-fetch");
+const { getAllSites } = require("../../services/warehouse");
 
 router.get(routes.index, async (req, res, next) => {
   try {
+    let data = getAllSites();
+
     res.render("pages/tower_360/tower_360", {
       title: "home",
       form_url: routes.tower_360,
       layout: "layouts/layout",
       routes,
+      data,
     });
   } catch (e) {
     res.status(500).json({ error: e.message });

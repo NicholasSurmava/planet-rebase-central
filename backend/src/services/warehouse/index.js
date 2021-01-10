@@ -14,7 +14,7 @@ let createSites = (count) => {
     );
     let city = faker.address.city();
     let site = new Site(
-      1,
+      i + 1,
       (location = {
         street_address: faker.address.streetAddress(),
         city: city,

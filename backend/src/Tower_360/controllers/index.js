@@ -3,13 +3,13 @@ const { routes } = require("../../../config");
 const url = require("url");
 const fetch = require("node-fetch");
 // const { getAllSites } = require("../../services/warehouse");
-const { helloMiddleware } = require("../../middlewares");
+const { helloMiddleware } = require("../../middleware");
 
 router.use(routes.index + "report", helloMiddleware);
 
 router.get(routes.index, async (req, res, next) => {
   try {
-    res.render("pages/tower_360/tower_360", {
+    res.render("pages/tower_360", {
       title: "home",
       form_url: routes.tower_360,
       layout: "layouts/layout",
@@ -55,7 +55,7 @@ router.get(routes.index + "report", async (req, res, next) => {
       tech: ["low_speed_data", "high_speed_data", "voice", "emergency"],
     };
 
-    res.render("pages/tower_360/tower_360_report", {
+    res.render("pages/tower_360_report", {
       title: fake_data.site_id,
       fake_data,
       routes,

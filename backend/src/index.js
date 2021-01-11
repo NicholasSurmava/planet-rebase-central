@@ -11,15 +11,16 @@ app.use("/static", express.static(path.join(__dirname, "public")));
 
 app.use(expressLayouts);
 app.set("layout", path.join(__dirname, "views/layouts/layout"));
-app.set("views", path.join(__dirname, "views"));
+app.set("views", path.join(__dirname, "Tower_360/views"));
+// app.set('views', [__dirname + '/viewsFolder1', __dirname + '/viewsFolder2']);
 app.set("view engine", "ejs");
 
 // Middleware
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
-const tower_360 = require(path.join(__dirname, "controllers/tower_360"));
-const warehouse = require(path.join(__dirname, "controllers/warehouse"));
+const tower_360 = require(path.join(__dirname, "./Tower_360/controllers"));
+const warehouse = require(path.join(__dirname, "./Warehouse/controllers"));
 
 app.use(routes.tower_360, tower_360);
 app.use(routes.warehouse, warehouse);

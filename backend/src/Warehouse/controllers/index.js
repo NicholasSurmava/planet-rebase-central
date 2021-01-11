@@ -2,7 +2,7 @@
 const router = require("express").Router();
 const { routes } = require("../../../config");
 const faker = require("faker");
-const { getAllSites, getAllMWSites } = require("../../services/warehouse");
+const { getAllSites, getAllMWSites } = require("../services");
 
 router.get(routes.index + "get_sites", async (req, res, next) => {
   try {

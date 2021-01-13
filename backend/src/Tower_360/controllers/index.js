@@ -5,9 +5,9 @@ const fetch = require("node-fetch");
 // const { getAllSites } = require("../../services/warehouse");
 const { helloMiddleware } = require("../../middleware");
 
-router.use(routes.index + "report", helloMiddleware);
+router.use(routes.tower_360_report, helloMiddleware);
 
-router.get(routes.index, async (req, res, next) => {
+router.get(routes.tower_360, async (req, res, next) => {
   try {
     res.render("pages/tower_360", {
       title: "home",
@@ -20,7 +20,7 @@ router.get(routes.index, async (req, res, next) => {
   }
 });
 
-router.post(routes.index, async (req, res, next) => {
+router.post(routes.tower_360, async (req, res, next) => {
   try {
     res.redirect(
       url.format({
@@ -35,7 +35,7 @@ router.post(routes.index, async (req, res, next) => {
   }
 });
 
-router.get(routes.index + "report", async (req, res, next) => {
+router.get(routes.tower_360_report, async (req, res, next) => {
   try {
     let querystrings = {
       site_id: req.query.site_id,

@@ -22,16 +22,15 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 const tower_360 = require(path.join(__dirname, "./Tower_360/controllers"));
 const warehouse = require(path.join(__dirname, "./Warehouse/controllers"));
 
-app.use(routes.tower_360, tower_360);
-app.use(routes.warehouse, warehouse);
+app.use(routes.index, tower_360);
+app.use(routes.index, warehouse);
 
-app.use("/", requestDate);
+app.use(routes.index, requestDate);
 
 // Index
 app.get(routes.index, (req, res, next) => {
   try {
     res.redirect(routes.tower_360);
-    // res.send("hello");
   } catch (e) {
     res.status(500).json({ error: e.message });
   }

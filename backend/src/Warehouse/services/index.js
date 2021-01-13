@@ -12,7 +12,9 @@ let createSites = (count) => {
       faker.internet.userName(),
       faker.internet.password()
     );
+
     let city = faker.address.city();
+
     let site = new Site(
       i + 1,
       (location = {
@@ -26,6 +28,7 @@ let createSites = (count) => {
       (tech = ["low_speed_data", "high_speed_data", "voice", "emergency"]),
       newUser.userName
     );
+
     sites.push(site);
   }
 

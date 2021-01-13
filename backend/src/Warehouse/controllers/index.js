@@ -19,6 +19,7 @@ module.exports = router;
 router.get(routes.index + "get_mw", async (req, res, next) => {
   try {
     let data = getAllMWSites();
+
     res.json({ data });
   } catch (e) {
     res.status(500).json({ error: e.message });

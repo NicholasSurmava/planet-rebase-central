@@ -37,16 +37,7 @@ let mapDemo = () => {
       fillColor: "#f03",
       fillOpacity: 0.5,
       radius: 100,
-    })
-      .addTo(mymap)
-      .on("click", onClick);
-
-    function onClick(e) {
-      const URL = `${routes.tower_360_report}?site=123456`;
-      window.open(URL, "_blank");
-    }
-
-    var popup = L.popup();
+    }).addTo(mymap);
 
     circle.on("mouseover", function () {
       circle.bindPopup("Site id: 12345").openPopup();
@@ -172,10 +163,6 @@ let getWeather = () => {
   fetch("/tower_360/__demo_weather")
     .then((response) => response.json())
     .then((data) => {
-      // weatherSection.document.querySelector("div").innerHTML = data;
-      // console.log(weatherSection.childNodes);
-      // console.log(data);
-
       weatherSectionContainer.appendChild(ul);
       data.forEach((d) => {
         const li = document.createElement("li");

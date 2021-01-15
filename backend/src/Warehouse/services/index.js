@@ -37,7 +37,6 @@ let createSites = (count) => {
 
 exports.getAllSites = function () {
   let sites = createSites(20);
-  console.log(sites);
   return sites;
 };
 

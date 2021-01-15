@@ -66,7 +66,7 @@ router.get(routes.tower_360_report, async (req, res, next) => {
   }
 });
 
-router.get("/__demo_weather", async (req, res, next) => {
+router.get(routes.tower_360_weather, async (req, res, next) => {
   try {
     const getWeather = await fetch(
       "https://www.metaweather.com/api/location/search/?lattlong=36.96,-122.02"

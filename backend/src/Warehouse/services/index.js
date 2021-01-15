@@ -1,17 +1,17 @@
 // TODO: Warehouse services class
 const faker = require("faker");
-const { Site, User } = require("../../models");
+const { Site, User } = require("../models");
 
 let createSites = (count) => {
   let sites = [];
 
   for (i = 0; i < count; i++) {
-    let newUser = new User(
-      faker.name.firstName(),
-      faker.name.lastName(),
-      faker.internet.userName(),
-      faker.internet.password()
-    );
+    // let newUser = new User(
+    //   faker.name.firstName(),
+    //   faker.name.lastName(),
+    //   faker.internet.userName(),
+    //   faker.internet.password()
+    // );
 
     let city = faker.address.city();
 
@@ -25,8 +25,8 @@ let createSites = (count) => {
       }),
       city,
       111111,
-      (tech = ["low_speed_data", "high_speed_data", "voice", "emergency"]),
-      newUser.userName
+      (tech = ["low_speed_data", "high_speed_data", "voice", "emergency"])
+      // newUser.userName
     );
 
     sites.push(site);
@@ -37,6 +37,7 @@ let createSites = (count) => {
 
 exports.getAllSites = function () {
   let sites = createSites(20);
+  console.log(sites);
   return sites;
 };
 

@@ -9,4 +9,7 @@ def create_app(config):
     def heartbeat():
         return jsonify({'app_name': 'API', 'version': 1, 'status': 'badum badum badum'})
 
+    from .api.v1 import api
+    app.register_blueprint(api)
+
     return app

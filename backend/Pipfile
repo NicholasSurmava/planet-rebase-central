@@ -5,9 +5,12 @@ name = "pypi"
 
 [packages]
 flask = {extras = ["async"], version = "*"}
+sqlalchemy = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 mypy = "*"
+autopep8 = "*"
 
 [requires]
 python_version = "3.8"

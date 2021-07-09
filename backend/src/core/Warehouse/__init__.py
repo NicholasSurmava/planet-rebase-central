@@ -3,10 +3,15 @@ from flask import current_app
 
 
 class Warehouse:
-    def __init__(self) -> None:
-        pass
+    def get_sites(self, source, type):
+        if source == "planet-rebase-warehouse":
+            current_app.logger.info(
+                f"Getting sites of type \"{type}\" from source \"{source}\"")
+            sites = self.__get_pr_warehouse(type)
+            return sites
+        else:
+            raise ValueError("Invalid Source")
 
-    def get_sites(self, type):
-        current_app.logger.info("Getting Sites")
+    def __get_pr_warehouse(self, type):
         time.sleep(4)
-        return {"sites": "some sites"}
+        return {"sites": [1, 2, 3, 4, 5, 6]}

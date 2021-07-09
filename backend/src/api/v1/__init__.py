@@ -1,5 +1,7 @@
+import sys
+
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, session, url_for, jsonify
+    Blueprint, jsonify, current_app
 )
 
 from src.core.Warehouse import Warehouse
@@ -17,10 +19,21 @@ def api_index():
 def api_get_sites():
     warehouse = Warehouse()
 
-    sites = warehouse.get_sites("comm_tower")
+    try:
+        sites = warehouse.get_sites("planet-rebase-warehouse", "comm_tower")
+        # sites = warehouse.get_sites("somewhere", "comm_tower")
 
-    data = [
-        sites
-    ]
+        data = [
+            sites
+        ]
 
-    return jsonify(data)
+        return jsonify(data)
+
+    except ValueError as err:
+        current_app.logger.info(str(err))
+
+        return jsonify({
+            "sites": [],
+            "status": 400,
+            "message": str(err)
+        })

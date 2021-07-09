@@ -10,3 +10,7 @@ flask = {extras = ["async"], version = "*"}
 
 [requires]
 python_version = "3.8"
+
+[scripts]
+"dev:server" = "python server.py"
+"dev:gen_sites" = "python scripts/generator.py"
